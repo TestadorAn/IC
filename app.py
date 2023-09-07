@@ -8,6 +8,10 @@ from skfuzzy import control as ctrl
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return '/templates/index.html'
+
 # Defina as variáveis fuzzy e regras aqui (como no seu código original)
 # Definindo as variáveis do universo
 preco = ctrl.Antecedent(np.arange(0, 1.1, 0.1), "preco")
