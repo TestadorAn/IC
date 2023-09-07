@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sistema Fuzzy</title>
+    <style>
+      * {box-sizing: border-box;}
+
+      body { 
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .header {
+        overflow: hidden;
+        background-color: #f1f1f1;
+        padding: 20px 10px;
+        text-align: center;
+      }
+      .header a {
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 18px; 
+        line-height: 25px;
+        border-radius: 4px;
+      }
+      .header a.logo {
+        font-size: 36px;
+        font-weight: bold;
+        
+      }
+      .body {
+        padding: 10px 10px;
+        text-align: center;
+        font-size: 18px;
+      }
+      .button {
+        background-color: #354449;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 12px;
+      }
+      .borda {
+        border: 2px solid #354449;
+        padding: 10px;
+        
+        display: inline-block;
+        margin: 4px 2px;
+        border-radius: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="#default" class="logo">Sistema Fuzzy</a>
+    </div>
+    <div class="body">
+      <h2>Valores de Entrada do Sistema Fuzzy (Preço e Produto):</h2>
+      <div class="borda">
+    <small>Considerando um produto que deseja ser comprado, avalie o qual caro e o quão bonito é esse produto.</small>
+    <form method="post" action="/">
+      <label for="preco">Quão custoso é o preço (entre 0% e 100%):</label>
+      <input type="number" min="0" max="100" name="preco" required /><br />
+      <label for="produto">Beleza do produto (entre 0% e 100%):</label>
+      <input type="number" min="0" max="100" name="produto" required /><br />
+      <button type="submit" class="button">Calcular e exibir gráficos</button>
+    </form>
+  </div></div>
+  {% if output_mercado %}
+  <div class="body">
+    <h2>Valor de Saída do Sistema Fuzzy (Mercado):</h2>
+    <div class="borda">
+    <small>Porcentagem do quanto vale a pena comprar o produto.</small>
+    <p>Valor: {{ output_mercado }}%</p>
+  </div> </div>
+    {% endif %}
+    {% if plot_data %}
+    <div class="body">
+      <h2>Gráficos de Pertinência:</h2>
+      <div class="borda">
+    <img
+      src="data:image/png;base64,{{ plot_data }}"
+      alt="Gráficos de Pertinência"
+    />
+  </div> </div>
+    {% endif %}
+  </body>
+</html>
