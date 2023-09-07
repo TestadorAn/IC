@@ -1,3 +1,1 @@
-flask==2.3.3
-plotly==5.16.1
-scikit-fuzzy==0.4.2
+Flask==2.3.3
